@@ -17,7 +17,7 @@
 <%!
     // Exercice 3 : Interface Affichable
     interface Affichable {
-        String afficher(); // Retourne une chaîne pour l'affichage en JSP
+        String afficher(); 
     }
 
     // Une classe mère Animal
@@ -26,25 +26,23 @@
         public Animal(String nom) { this.nom = nom; }
         public String crier() { return "..."; }
         
-        // Exercice 1 : Redéfinition de toString() dans la classe mère
+        // Exercice 1 : Redéfinition de toString()
         @Override
         public String toString() {
             return "Animal nommé " + nom;
         }
     }
 
-    // Deux classes filles qui redéfinissent la méthode crier() et implémentent Affichable
+    // Deux classes filles
     class Chien extends Animal implements Affichable {
         public Chien(String nom) { super(nom); }
         public String crier() { return "Wouf wouf !"; }
         
-        // Exercice 1 : Redéfinition de toString()
         @Override
         public String toString() {
             return "Chien nommé " + nom;
         }
 
-        // Exercice 3 : Implémentation de la méthode afficher()
         public String afficher() {
             return "[Affichage] Je suis un chien, mon nom est " + nom;
         }
@@ -54,13 +52,11 @@
         public Chat(String nom) { super(nom); }
         public String crier() { return "Miaou !"; }
         
-        // Exercice 1 : Redéfinition de toString()
         @Override
         public String toString() {
             return "Chat nommé " + nom;
         }
 
-        // Exercice 3 : Implémentation de la méthode afficher()
         public String afficher() {
             return "[Affichage] Je suis un chat, mon nom est " + nom;
         }
@@ -72,7 +68,6 @@
         @Override
         public String crier() { return "Cui cui !"; }
         
-        // Optionnel : redéfinition de toString() pour l'exercice 1
         @Override
         public String toString() {
             return "Oiseau nommé " + nom;
@@ -111,21 +106,14 @@
 
 <% if (chien != null && chat != null && !chien.isEmpty() && !chat.isEmpty()) { %>
 
-    <%-- 
-        Tableau d'Animal contenant un Chien, un Chat ET un Oiseau (Exercice 4) 
-    --%>
+    <%-- Tableau d'Animal (Exercice 4 inclus) --%>
     <% Animal[] animaux = { new Chien(chien), new Chat(chat), new Oiseau("PiouPiou") }; %>
 
     <p>Démonstration du polymorphisme :</br>
-    Le tableau est déclaré <code>Animal[]</code>, mais c'est bien la méthode <code>crier()</code> de la sous-classe (Chien, Chat ou Oiseau) qui est appelée à l'exécution.</p>
+    Le tableau est déclaré <code>Animal[]</code>, mais c'est bien la méthode <code>crier()</code> de la sous-classe qui est appelée à l'exécution.</p>
 
-    <%-- 
-        Boucle d'affichage d'origine STRICTEMENT INCHANGÉE (Exercice 4), 
-        mais complétée pour l'exercice 1 et l'exercice 5.
-    --%>
     <% for (Animal a : animaux) { %>
         <p><%= a.nom %> dit : <%= a.crier() %></p>
-        
         <p><i>Résultat toString() : <%= a.toString() %></i></p>
         
         <p>Type détecté : 
@@ -141,9 +129,35 @@
     <% } %>
 
     <h2>Exercice 1 : Redéfinir toString()</h2>
-    <p>Le résultat est visible directement dans la boucle ci-dessus sous chaque animal (l'appel à <code>toString()</code> est automatique ou explicite).</p>
+    <p>Le résultat est visible directement dans la boucle ci-dessus sous chaque animal.</p>
 
     <h2>Exercice 2 : La classe abstraite Forme</h2>
     <%
-        // Création d'un tableau de Forme contenant un Cercle (rayon 3) et un Carré (côté 4)
-        Forme[] formes = { new Cercle(3.0), new Carre(4.
+        Forme[] formes = { new Cercle(3.0), new Carre(4.0) };
+    %>
+    <ul>
+        <% for(Forme f : formes) { %>
+            <li>Aire de la forme : <%= String.format("%.2f", f.aire()) %></li>
+        <% } // <-- L'OUBLI ÉTAIT ICI, CETTE BOUCLE EST MAINTENANT BIEN FERMÉE %>
+    </ul>
+
+    <h2>Exercice 3 : L'interface Affichable</h2>
+    <%
+        Affichable[] elementsAffichables = { new Chien(chien), new Chat(chat) };
+    %>
+    <ul>
+        <% for(Affichable element : elementsAffichables) { %>
+            <li><%= element.afficher() %></li>
+        <% } %>
+    </ul>
+
+    <h2>Exercice 4 : Ajouter un Oiseau</h2>
+    <p>L'oiseau "PiouPiou" a été ajouté au tableau principal sans modifier sa boucle d'affichage.</p>
+
+    <h2>Exercice 5 : L'opérateur instanceof</h2>
+    <p>L'analyse dynamique avec <code>instanceof</code> est fonctionnelle dans la boucle principale.</p>
+
+<% } %>
+<p><a href="index.html">Retour au sommaire</a></p>
+</body>
+</html>
