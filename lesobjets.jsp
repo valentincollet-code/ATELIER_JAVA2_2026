@@ -21,7 +21,10 @@
         private String nom;
         private int age;
 
-        // Exercice 2 : Méthode seDecrire()
+        // <h2>Exercice 2 : Ajouter une méthode à la classe Personne</h2>
+<p>Ajouter à la classe <code>Personne</code> une méthode <code>seDecrire()</code> qui retourne une chaîne du type :</br>
+"Je m'appelle Marie et j'ai 25 ans".</br>
+Appeler cette méthode sur l'objet <code>p</code> et afficher le résultat.</p>
         public String seDecrire() {
             return "Je m'appelle " + this.nom + " et j'ai " + this.age + " ans.";
         }
@@ -35,6 +38,10 @@
     }
 
     // Exercice 1 : Classe Voiture
+<h2>Exercice 1 : La classe Voiture</h2>
+<p>Créer une classe <code>Voiture</code> avec les attributs <code>marque</code>, <code>modele</code> et <code>annee</code>.</br>
+Instancier une voiture, lui affecter des valeurs et afficher ses caractéristiques.</p>
+
     class Voiture {
         String marque;
         String modele;
@@ -42,6 +49,10 @@
     }
 
     // Exercice 3 : Classe Rectangle
+<h2>Exercice 3 : La classe Rectangle</h2>
+<p>Créer une classe <code>Rectangle</code> avec les attributs <code>longueur</code> et <code>largeur</code>.</br>
+Ajouter une méthode <code>calculerSurface()</code> qui retourne la surface du rectangle.</br>
+Créer un rectangle de 5 par 3 et afficher sa surface.</p>
     class Rectangle {
         double longueur;
         double largeur;
@@ -52,6 +63,10 @@
     }
 
     // Exercice 4 : Classe CompteBancaire
+<h2>Exercice 4 : Le compte bancaire</h2>
+<p>Créer une classe <code>CompteBancaire</code> avec un attribut <code>solde</code>.</br>
+Ajouter deux méthodes : <code>deposer(double montant)</code> et <code>retirer(double montant)</code>.</br>
+Créer un compte, déposer 100€, retirer 30€, puis afficher le solde final.</p>
     class CompteBancaire {
         double solde;
 
